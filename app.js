@@ -11,7 +11,9 @@ const bodyParser = require('body-parser')
 // 載入 method-override
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
-
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const routes = require('./routes')
 
 require('./config/mongoose')
@@ -22,7 +24,7 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
