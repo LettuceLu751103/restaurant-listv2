@@ -5,19 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant List</title>
-  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
 
 </head>
 
 <body>
-  <!-- navigation -->
-  {{!-- <nav class="navbar navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">restaurant List</a>
-    </div>
-  </nav> --}}
+  <nav class="navbar navbar-dark bg-primary justify-content-between">
+
+    <a class="navbar-brand" href="/">
+      {{#if isAuthenticated}}{{ user.name}}'s {{/if}}
+      Restaurant List
+    </a>
+    {{#if isAuthenticated}}
+    <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+    {{else}}
+    <a href="/users/login" class="btn btn-outline-light">Login</a>
+    {{/if}}
+
+  </nav>
+
   {{{ body }}}
 
   <script src="/javascripts/jquery-3.3.1.js"></script>
